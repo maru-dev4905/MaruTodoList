@@ -184,6 +184,7 @@ input:focus, button:focus, textarea:focus{
 .detail-box .todolist-date{
     font-size: 14px;
     color: #3c6382;
+    word-break: break-all;
 }
 .detail-box span{
     font-size: 16px;
@@ -193,6 +194,7 @@ input:focus, button:focus, textarea:focus{
 .detail-box .description-text{
     font-size: 14px;
     line-height: 22px;
+    word-break: break-all;
 }
 .detail-box .status-text{
     font-size: 14px;

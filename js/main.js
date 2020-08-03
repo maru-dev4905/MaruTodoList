@@ -11,7 +11,7 @@ openBtn.addEventListener("click",open_createItem_popup);
 
 closeBtn.addEventListener("click",close_createItem_popup);
 
-btnAdd.addEventListener("click",(event)=>{
+btnAdd.addEventListener("click",()=>{
     let inputTextValue = inputText.value;
     let inputDescValue = inputDesc.value;
 
@@ -25,6 +25,9 @@ btnAdd.addEventListener("click",(event)=>{
         inputDesc.focus();
         return false;
     }
+    
+    inputText.value = "";
+    inputDesc.value = "";
     
     addNewItem(document.getElementById("todolist"), inputTextValue, inputDescValue);
     close_createItem_popup();
@@ -58,7 +61,7 @@ function addNewItem(list, itemText, itemDesc){
     
     const text = document.createElement("p");
     text.id = "text_" + id;
-    text.innerText = itemDesc;
+    text.innerText = itemText;
 
     const span = document.createElement("span");
     span.id = "span_" + id;
@@ -68,8 +71,18 @@ function addNewItem(list, itemText, itemDesc){
     listItem.appendChild(text);
     listItem.appendChild(span);
     list.appendChild(listItem);
+    
+    showItem(itemText, itemDesc, itemDate);
 }
+function showItem(itemText, itemDesc, itemDate){
+    const detailTitle = document.querySelector(".todolist-title");
+    const detailDate = document.querySelector(".todolist-date");
+    const detailDesc = document.querySelector(".description-text");
 
+    detailTitle.innerText = itemText;
+    detailDate.innerText = itemDate;    
+    detailDesc.innerText = itemDesc;
+}
 // function renameItem(){
 //     var newText = prompt("update text");
 //     if(!newText || newText === "" || newText === " ") return false;
