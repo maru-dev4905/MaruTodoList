@@ -19,10 +19,20 @@ i{
 li{
     list-style: none;
 }
+input{
+    border: none;
+    background: none;
+}
 button{
     background: none;
     border: none;
     cursor: pointer;
+}
+.hd{
+    position: absolute;
+    left: -1px;
+    visibility: hidden;
+    overflow: hidden;
 }
 input:focus, button:focus{
     outline: none;
@@ -59,9 +69,141 @@ input:focus, button:focus{
 }
 #header > .nav-open-btn:active i, .nav-item:active i{
     color: #78e08f;
+    transition: none;
 }
 #main{
     width: calc(100vw - 100px);
+    height: 100vh;
     position: relative;
     left: 100px;
+    padding: 25px 35px;
+}
+.search-box{
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.search-box button i{
+    color: #0a3d62;
+    margin-right: 10px;
+}
+
+.search-box #search-input.open{
+    width: 50%;
+    padding: 5px 10px;
+    transition: 0.3s;
+    border: 2px solid #0a3d62;
+}
+.search-box #search-input.open::placeholder{
+    font-size: 16px;
+}
+.search-box #search-input{
+    width: 0px;
+    border-radius: 15px;
+    height: 50px;
+    border: 2px solid #fff;
+    transition: 0.3s;
+}
+.search-box #search-input::placeholder{
+    font-size: 0px;
+}
+.main-top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.main-top .main-title{
+    font-weight: 500;
+    color: #0a3d62;
+    margin: 25px 0; 
+}
+.main-top .btnAdd{
+    padding: 10px 35px;
+    background-color: #fff;
+    border-radius: 25px;
+    border: 1.5px solid rgba(200,200,200,0.5);
+    color: #4a69bd;
+    font-weight: bold;
+    letter-spacing: 0.8px;
+}
+.main-top .btnAdd:active{
+    background-color: #4a69bd;
+    border-color: #4a69bd;
+    color: #fff;
+}
+.main-bottom{
+    display: flex;
+    justify-content: space-between;
+}
+#todolist{
+    width: 70%;
+    margin-right: 30px;
+}
+#todolist .list-item{
+    border-bottom: 1px solid rgba(200,200,200,0.5);
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 15px;
+    font-size: 14px;
+    background-color: #fff;
+    transition: 0.2s;
+    cursor: pointer;
+}
+#todolist .list-item:hover{
+    background-color: rgba(200,200,200,0.1);
+}
+#todolist .list-item span{
+    justify-self: flex-end;
+    margin-left: auto;
+}
+#todolist .list-item input{
+    margin-right: 10px;
+}
+.detail-box{
+    border: 1px solid rgba(200,200,200,0.5);
+    width: 30%;
+    max-height: auto;
+    min-height: 500px;
+    border-radius: 20px;
+    padding: 15px 35px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.detail-box .detail-box__header{
+    border-bottom: 2px solid #0a3d62;
+    padding-bottom: 15px;
+}
+.detail-box .todolist-title{
+    color: #0a3d62;
+    word-break: break-all;
+}
+.detail-box .todolist-date{
+    font-size: 14px;
+    color: #3c6382;
+}
+.detail-box span{
+    font-size: 16px;
+    color: #3c6382;
+    padding-bottom: 10px;
+}
+.detail-box .description-text{
+    font-size: 14px;
+    line-height: 22px;
+}
+.detail-box .status-text{
+    font-size: 14px;
+    line-height: 22px;
+}
+.update-btn{
+    background-color: #78e08f;
+    padding: 15px;
+    border-radius: 10px;
+}
+.delete-btn{
+    background-color: #e55039;
+    padding: 15px;
+    border-radius: 10px;
 }

@@ -1,85 +1,128 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="./css/style.css">
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+            rel="stylesheet">
+        <link rel="stylesheet" href="./css/style.css">
+    </head>
+    <body>
 
-    <header id="header">
-        <button type="button" class="nav-open-btn">
-            <i class="fas fa-bars"></i>
-        </button>
-        <a href="#" class="nav-item">
-            <i class="fas fa-check"></i>
-        </a>
-        <a href="#" class="nav-item">
-            <i class="fas fa-comment"></i>
-        </a>
-        <a href="#" class="nav-item">
-            <i class="fas fa-user"></i>
-        </a>
-        <a href="#" class="nav-item">
-            <i class="fas fa-envelope"></i>
-        </a>
-    </header>
-    <main id="main">
-        <div class="search-box">
-            <label for="search-input">search</label>
-            <input type="text" id="search-input"/>
-        </div>
-        <h1>My Tasks</h1>
-        <button class="btnAdd">New Task</button>
-        <ul id="todolist">
-            <li class="list-item">
-                <input type="checkbox">
-                <p>blabla</p>
-                <span>Oct 19</span>
-            </li>
-            <li class="list-item">
-                <input type="checkbox">
-                <p>blabla</p>
-                <span>Oct 19</span>
-            </li>
-            <li class="list-item">
-                <input type="checkbox">
-                <p>blabla</p>
-                <span>Oct 19</span>
-            </li>
-        </ul>
-        <div class="detail-box">
-            <div class="detail-box__header">
-                <h2 class="todolist-title"></h2>
-                <span class="todolist-date"></span>
+        <header id="header">
+            <button type="button" class="nav-open-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <a href="#" class="nav-item">
+                <i class="fas fa-check"></i>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-comment"></i>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-user"></i>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-envelope"></i>
+            </a>
+        </header>
+        <main id="main">
+            <div class="search-box">
+                <button type="button" class="search-icon">
+                    <i class="fas fa-search"></i>
+                </button>
+                <label class="hd" for="search-input">search</label>
+                <input type="text" id="search-input" placeholder="search your tasks"/>
             </div>
-            <span>Description</span>
-            <p class="description-text"></p>
-            <span>Status</span>
-            <p class="status-text"></p>
-        </div>
-    </main>
-    
+            <div class="main-top">
+                <h1 class="main-title">My Tasks</h1>
+                <button class="btnAdd">New Task</button>
+            </div>
+            <div class="main-bottom">
+                <ul id="todolist">
+                    <li class="list-item">
+                        <input type="checkbox">
+                        <p>blabla</p>
+                        <span>Oct 19</span>
+                    </li>
+                    <li class="list-item">
+                        <input type="checkbox">
+                        <p>blabla</p>
+                        <span>Oct 19</span>
+                    </li>
+                    <li class="list-item">
+                        <input type="checkbox">
+                        <p>blabla</p>
+                        <span>Oct 19</span>
+                    </li>
+                    <li class="list-item">
+                        <input type="checkbox">
+                        <p>blabla</p>
+                        <span>Oct 19</span>
+                    </li>
+                    <li class="list-item">
+                        <input type="checkbox">
+                        <p>blabla</p>
+                        <span>Oct 19</span>
+                    </li>
+                    <li class="list-item">
+                        <input type="checkbox">
+                        <p>blabla</p>
+                        <span>Oct 19</span>
+                    </li>
+                    <li class="list-item">
+                        <input type="checkbox">
+                        <p>blabla</p>
+                        <span>Oct 19</span>
+                    </li>
+                    <li class="list-item">
+                        <input type="checkbox">
+                        <p>blabla</p>
+                        <span>Oct 19</span>
+                    </li>
+                    <li class="list-item">
+                        <input type="checkbox">
+                        <p>blabla</p>
+                        <span>Oct 19</span>
+                    </li>
+                    </li>
+                    <li class="list-item">
+                        <input type="checkbox">
+                        <p>blabla</p>
+                        <span>Oct 19</span>
+                    </li>
+                </ul>
+                <div class="detail-box">
+                    <div class="detail-box__header">
+                        <h2 class="todolist-title">marutodolist-publishing</h2>
+                        <span class="todolist-date">Oct 19</span>
+                    </div>
+                    <span>Description</span>
+                    <p class="description-text">
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores quaerat, accusamus sint repudiandae saepe iste aperiam, officiis quo, in illo reiciendis. Veritatis, harum optio modi, quaerat itaque aliquid voluptatum voluptatibus accusantium aliquam excepturi sit tenetur molestias cumque ducimus iusto quibusdam saepe enim odio id obcaecati voluptate dolore nulla exercitationem eum!
+                    </p>
+                    <span>Status</span>
+                    <p class="status-text">
+                        clear
+                    </p>
+                    <div class="btn-group">
+                        <button class="update-btn" type="buttons">
+                            <i class="fas fa-pen"></i>
+                        </button>
+                        <button class="delete-btn" type="button ">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
 
+        <!-- <input type="text" id="inputText"> <button id="btnAdd">NewItem</button> <ul
+        id="todolist"> </ul> -->
 
-
-
-
-
-
-
-
-
-
-<!--     
-    <input type="text" id="inputText">
-    <button id="btnAdd">NewItem</button>
-    <ul id="todolist">
-
-    </ul> -->
-
-    <script src="./js/main.js"></script>
-</body>
+        <script src="./js/main.js"></script>
+        <script src="./js/search.js"></script>
+    </body>
 </html>
