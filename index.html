@@ -47,52 +47,6 @@
                         <p>blabla</p>
                         <span>Oct 19</span>
                     </li>
-                    <li class="list-item">
-                        <input type="checkbox">
-                        <p>blabla</p>
-                        <span>Oct 19</span>
-                    </li>
-                    <li class="list-item">
-                        <input type="checkbox">
-                        <p>blabla</p>
-                        <span>Oct 19</span>
-                    </li>
-                    <li class="list-item">
-                        <input type="checkbox">
-                        <p>blabla</p>
-                        <span>Oct 19</span>
-                    </li>
-                    <li class="list-item">
-                        <input type="checkbox">
-                        <p>blabla</p>
-                        <span>Oct 19</span>
-                    </li>
-                    <li class="list-item">
-                        <input type="checkbox">
-                        <p>blabla</p>
-                        <span>Oct 19</span>
-                    </li>
-                    <li class="list-item">
-                        <input type="checkbox">
-                        <p>blabla</p>
-                        <span>Oct 19</span>
-                    </li>
-                    <li class="list-item">
-                        <input type="checkbox">
-                        <p>blabla</p>
-                        <span>Oct 19</span>
-                    </li>
-                    <li class="list-item">
-                        <input type="checkbox">
-                        <p>blabla</p>
-                        <span>Oct 19</span>
-                    </li>
-                    </li>
-                    <li class="list-item">
-                        <input type="checkbox">
-                        <p>blabla</p>
-                        <span>Oct 19</span>
-                    </li>
                 </ul>
                 <div class="detail-box">
                     <div class="detail-box__header">
@@ -101,7 +55,12 @@
                     </div>
                     <span>Description</span>
                     <p class="description-text">
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores quaerat, accusamus sint repudiandae saepe iste aperiam, officiis quo, in illo reiciendis. Veritatis, harum optio modi, quaerat itaque aliquid voluptatum voluptatibus accusantium aliquam excepturi sit tenetur molestias cumque ducimus iusto quibusdam saepe enim odio id obcaecati voluptate dolore nulla exercitationem eum!
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores quaerat,
+                        accusamus sint repudiandae saepe iste aperiam, officiis quo, in illo reiciendis.
+                        Veritatis, harum optio modi, quaerat itaque aliquid voluptatum voluptatibus
+                        accusantium aliquam excepturi sit tenetur molestias cumque ducimus iusto
+                        quibusdam saepe enim odio id obcaecati voluptate dolore nulla exercitationem
+                        eum!
                     </p>
                     <span>Status</span>
                     <p class="status-text">
@@ -119,8 +78,30 @@
             </div>
         </main>
 
-        <!-- <input type="text" id="inputText"> <button id="btnAdd">NewItem</button> <ul
-        id="todolist"> </ul> -->
+        <div id="create-item">
+            <button class="create-item-close-btn">
+                <i class="fas fa-times"></i>
+            </button>
+            <ul>
+                <li>
+                    <h2>NewItem</h2>
+                </li>
+                <li>
+                    <label for="title-input">title</label>
+                    <input type="text" placeholder="title" id="title-input">
+                </li>
+                <li>
+                    <label for="title-description">description</label>
+                    <textarea id="title-description" cols="30" rows="10" placeholder="description"></textarea>
+                </li>
+                <li>
+                    <button type="button" class="create-btn" id="btnAdd">
+                        <i class="fas fa-pen"></i>
+                    </button>
+                </li>
+            </ul>
+        </div>
+        <div class="create-item-bg"></div>
 
         <script src="./js/main.js"></script>
         <script src="./js/search.js"></script>

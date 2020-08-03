@@ -34,7 +34,7 @@ button{
     visibility: hidden;
     overflow: hidden;
 }
-input:focus, button:focus{
+input:focus, button:focus, textarea:focus{
     outline: none;
 }
 #header{
@@ -50,6 +50,7 @@ input:focus, button:focus{
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
 }
 #header > .nav-open-btn, .nav-item{
     margin-bottom: 30px;
@@ -206,4 +207,77 @@ input:focus, button:focus{
     background-color: #e55039;
     padding: 15px;
     border-radius: 10px;
+}
+#create-item{
+    padding: 25px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 9999;
+    background-color: #fff;
+    width: 500px;
+    height: 80%;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+#create-item h2{
+    margin-bottom: 50px;
+}
+#create-item .create-item-close-btn i{
+    color: #0c2461;
+    font-size: 26px;
+    padding: 10px;
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    transition: 0.2s;
+}
+#create-item .create-item-close-btn i:active{
+    opacity: 0.7;
+}
+#create-item li{
+    margin: 15px 0;
+}
+#create-item label{
+    display: block;
+    padding-bottom: 10px;
+}
+#create-item input {
+    border: 1px solid rgba(200,200,200,0.5);
+    padding: 10px 15px;
+    width: 100%;
+    border-radius: 5px;
+    transition: 0.2s;
+}
+#create-item textarea{
+    width: 100%;
+    border: 1px solid rgba(200,200,200,0.5);
+    padding: 15px;
+    transition: 0.2s;
+}
+#create-item input:focus, textarea:focus{
+    box-shadow: 0px 0px 3px #4a69bd;
+}
+.create-item-bg{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(200,200,200,0.5);
+    left: 0;
+    top: 0;
+    z-index: 6000;
+}
+.create-btn{
+    background-color: #4a69bd;
+    position: absolute;
+    bottom: 25px;
+    right: 25px;
+    width: 56px;
+    height: 50px;
+    border-radius: 10px;
+    transition: 0.2s;
+}
+.create-btn:active{
+    opacity: 0.7;
 }
