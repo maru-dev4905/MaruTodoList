@@ -118,7 +118,7 @@ input:focus, button:focus, textarea:focus{
     color: #0a3d62;
     margin: 25px 0; 
 }
-.main-top .btnAdd{
+.main-top #open-btn{
     padding: 10px 35px;
     background-color: #fff;
     border-radius: 25px;
@@ -127,7 +127,7 @@ input:focus, button:focus, textarea:focus{
     font-weight: bold;
     letter-spacing: 0.8px;
 }
-.main-top .btnAdd:active{
+.main-top #open-btn:active{
     background-color: #4a69bd;
     border-color: #4a69bd;
     color: #fff;
@@ -220,11 +220,12 @@ input:focus, button:focus, textarea:focus{
     height: 80%;
     border-radius: 10px;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    display: none;
 }
 #create-item h2{
     margin-bottom: 50px;
 }
-#create-item .create-item-close-btn i{
+#create-item #create-item-close-btn i{
     color: #0c2461;
     font-size: 26px;
     padding: 10px;
@@ -233,7 +234,7 @@ input:focus, button:focus, textarea:focus{
     top: 10px;
     transition: 0.2s;
 }
-#create-item .create-item-close-btn i:active{
+#create-item #create-item-close-btn i:active{
     opacity: 0.7;
 }
 #create-item li{
@@ -267,6 +268,7 @@ input:focus, button:focus, textarea:focus{
     left: 0;
     top: 0;
     z-index: 6000;
+    display: none;
 }
 .create-btn{
     background-color: #4a69bd;

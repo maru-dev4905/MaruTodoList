@@ -38,7 +38,7 @@
             </div>
             <div class="main-top">
                 <h1 class="main-title">My Tasks</h1>
-                <button class="btnAdd">New Task</button>
+                <button id="open-btn">New Task</button>
             </div>
             <div class="main-bottom">
                 <ul id="todolist">
@@ -50,21 +50,16 @@
                 </ul>
                 <div class="detail-box">
                     <div class="detail-box__header">
-                        <h2 class="todolist-title">marutodolist-publishing</h2>
-                        <span class="todolist-date">Oct 19</span>
+                        <h2 class="todolist-title"></h2>
+                        <span class="todolist-date"></span>
                     </div>
                     <span>Description</span>
                     <p class="description-text">
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores quaerat,
-                        accusamus sint repudiandae saepe iste aperiam, officiis quo, in illo reiciendis.
-                        Veritatis, harum optio modi, quaerat itaque aliquid voluptatum voluptatibus
-                        accusantium aliquam excepturi sit tenetur molestias cumque ducimus iusto
-                        quibusdam saepe enim odio id obcaecati voluptate dolore nulla exercitationem
-                        eum!
+                        
                     </p>
                     <span>Status</span>
                     <p class="status-text">
-                        clear
+                        
                     </p>
                     <div class="btn-group">
                         <button class="update-btn" type="buttons">
@@ -79,7 +74,7 @@
         </main>
 
         <div id="create-item">
-            <button class="create-item-close-btn">
+            <button id="create-item-close-btn">
                 <i class="fas fa-times"></i>
             </button>
             <ul>
@@ -88,11 +83,11 @@
                 </li>
                 <li>
                     <label for="title-input">title</label>
-                    <input type="text" placeholder="title" id="title-input">
+                    <input type="text" placeholder="title" id="title-input" autofocus required>
                 </li>
                 <li>
                     <label for="title-description">description</label>
-                    <textarea id="title-description" cols="30" rows="10" placeholder="description"></textarea>
+                    <textarea id="title-description" cols="30" rows="10" placeholder="description" required></textarea>
                 </li>
                 <li>
                     <button type="button" class="create-btn" id="btnAdd">
