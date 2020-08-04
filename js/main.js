@@ -7,17 +7,17 @@ const btnAdd = document.getElementById("btnAdd");
 
 const createBoxBg = document.querySelector(".create-item-bg");
 
+
 openBtn.addEventListener("click",open_createItem_popup);
 
 closeBtn.addEventListener("click",close_createItem_popup);
 
 const TODOS_LS = "maruTodoList";
 
+const loadedToDos = localStorage.getItem(TODOS_LS);
 let toDos = [];
 
-function saveToDos(){
-    localStorage.setItem(TODOS_LS, JSON.stringify(toDos));
-}
+
 
 btnAdd.addEventListener("click",()=>{
     let inputTextValue = inputText.value;
@@ -49,10 +49,11 @@ function close_createItem_popup(){
     createBox.style.display = "none";
     createBoxBg.style.display = "none";
 }
+let id = 0;
 
 function addNewItem(list, itemText, itemDesc){
     const date = new Date();
-    let id = "" + date.getHours() + date.getMinutes() + date.getSeconds() + date.getMilliseconds();
+    id++;
 
     const year = date.getFullYear();
     const month = date.getMonth() + 1;
@@ -87,9 +88,9 @@ function addNewItem(list, itemText, itemDesc){
         date: itemDate
     };
     toDos.push(toDoObj);
-    saveToDos();
-
+    
     showItem(itemText, itemDesc, itemDate);
+    saveToDos();
 }
 function showItem(itemText, itemDesc, itemDate){
     const detailTitle = document.querySelector(".todolist-title");
@@ -100,8 +101,11 @@ function showItem(itemText, itemDesc, itemDate){
     detailDate.innerText = itemDate;
     detailDesc.innerText = itemDesc;
 }
+function saveToDos(){
+    localStorage.setItem(TODOS_LS, JSON.stringify(toDos));
+    clickList();
+}
 function loadToDos(){
-    const loadedToDos = localStorage.getItem(TODOS_LS);
     
     if(loadedToDos !== null){
         const parsedToDos  = JSON.parse(loadedToDos);
@@ -110,10 +114,34 @@ function loadToDos(){
         })
     }
 }
-function init(){
-    loadToDos();
+
+loadToDos();
+
+function clickList(){
+    let todoListItem = document.querySelectorAll(".list-item");
+    
+    for(let i = 0; i < todoListItem.length; i++){
+        todoListItem[i].addEventListener("click",()=>{
+            let listItemId = todoListItem[i].id;
+            listItemId = listItemId.replace("li_","");
+            listItemId = Number(listItemId);
+            if(loadedToDos !== null){
+                const parseToDos = JSON.parse(loadedToDos);
+                
+                parseToDos.forEach(function(toDo){
+                    if(toDo.id == listItemId){
+                        let toDoTitle = toDo.title;
+                        let toDoText = toDo.text;
+                        let toDoDate = toDo.date;
+                        
+                        showItem(toDoTitle, toDoText, toDoDate);
+                    }
+                });
+            }
+        });
+    }
 }
-init();
+clickList();
 
 // function renameItem(){
 //     var newText = prompt("update text");
