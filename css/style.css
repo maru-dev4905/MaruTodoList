@@ -176,6 +176,7 @@ input:focus, button:focus, textarea:focus{
 .detail-box .detail-box__header{
     border-bottom: 2px solid #0a3d62;
     padding-bottom: 15px;
+    min-height: 70px;
 }
 .detail-box .todolist-title{
     color: #0a3d62;

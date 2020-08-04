@@ -11,6 +11,14 @@ openBtn.addEventListener("click",open_createItem_popup);
 
 closeBtn.addEventListener("click",close_createItem_popup);
 
+const TODOS_LS = "maruTodoList";
+
+let toDos = [];
+
+function saveToDos(){
+    localStorage.setItem(TODOS_LS, JSON.stringify(toDos));
+}
+
 btnAdd.addEventListener("click",()=>{
     let inputTextValue = inputText.value;
     let inputDescValue = inputDesc.value;
@@ -72,6 +80,15 @@ function addNewItem(list, itemText, itemDesc){
     listItem.appendChild(span);
     list.appendChild(listItem);
     
+    const toDoObj = {
+        title: itemText,
+        text: itemDesc,
+        id: id,
+        date: itemDate
+    };
+    toDos.push(toDoObj);
+    saveToDos();
+
     showItem(itemText, itemDesc, itemDate);
 }
 function showItem(itemText, itemDesc, itemDate){
@@ -80,9 +97,24 @@ function showItem(itemText, itemDesc, itemDate){
     const detailDesc = document.querySelector(".description-text");
 
     detailTitle.innerText = itemText;
-    detailDate.innerText = itemDate;    
+    detailDate.innerText = itemDate;
     detailDesc.innerText = itemDesc;
 }
+function loadToDos(){
+    const loadedToDos = localStorage.getItem(TODOS_LS);
+    
+    if(loadedToDos !== null){
+        const parsedToDos  = JSON.parse(loadedToDos);
+        parsedToDos.forEach(function(toDo){
+            addNewItem(document.getElementById("todolist"),toDo.title, toDo.text);
+        })
+    }
+}
+function init(){
+    loadToDos();
+}
+init();
+
 // function renameItem(){
 //     var newText = prompt("update text");
 //     if(!newText || newText === "" || newText === " ") return false;
