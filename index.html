@@ -103,14 +103,38 @@
                 </li>
                 <li>
                     <label for="title-input">title</label>
-                    <input type="text" placeholder="title" id="title-input" autofocus required>
+                    <input type="text" placeholder="title" id="title-input">
                 </li>
                 <li>
                     <label for="title-description">description</label>
-                    <textarea id="title-description" cols="30" rows="10" placeholder="description" required></textarea>
+                    <textarea id="title-description" cols="30" rows="10" placeholder="description"></textarea>
                 </li>
                 <li>
                     <button type="button" class="create-btn" id="btnAdd">
+                        <i class="fas fa-pen"></i>
+                    </button>
+                </li>
+            </ul>
+        </div>
+
+        <div id="update-item">
+            <button id="update-item-close-btn">
+                <i class="fas fa-times"></i>
+            </button>
+            <ul>
+                <li>
+                    <h2>UpdateItem</h2>
+                </li>
+                <li>
+                    <label for="title-input2">title</label>
+                    <input type="text" placeholder="title" id="title-input2">
+                </li>
+                <li>
+                    <label for="title-description2">description</label>
+                    <textarea id="title-description2" cols="30" rows="10" placeholder="description"></textarea>
+                </li>
+                <li>
+                    <button type="button" class="update-btn" id="btnUpdate">
                         <i class="fas fa-pen"></i>
                     </button>
                 </li>
@@ -120,5 +144,6 @@
 
         <script src="./js/main.js"></script>
         <script src="./js/search.js"></script>
+        <script src="./js/update.js"></script>
     </body>
 </html>

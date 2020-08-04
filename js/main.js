@@ -7,6 +7,9 @@ const btnAdd = document.getElementById("btnAdd");
 
 const createBoxBg = document.querySelector(".create-item-bg");
 
+const detailTitle = document.querySelector(".todolist-title");
+const detailDate = document.querySelector(".todolist-date");
+const detailDesc = document.querySelector(".description-text");
 
 openBtn.addEventListener("click",open_createItem_popup);
 
@@ -16,8 +19,6 @@ const TODOS_LS = "maruTodoList";
 
 const loadedToDos = localStorage.getItem(TODOS_LS);
 let toDos = [];
-
-
 
 btnAdd.addEventListener("click",()=>{
     let inputTextValue = inputText.value;
@@ -93,9 +94,6 @@ function addNewItem(list, itemText, itemDesc){
     saveToDos();
 }
 function showItem(itemText, itemDesc, itemDate){
-    const detailTitle = document.querySelector(".todolist-title");
-    const detailDate = document.querySelector(".todolist-date");
-    const detailDesc = document.querySelector(".description-text");
 
     detailTitle.innerText = itemText;
     detailDate.innerText = itemDate;
@@ -103,7 +101,6 @@ function showItem(itemText, itemDesc, itemDate){
 }
 function saveToDos(){
     localStorage.setItem(TODOS_LS, JSON.stringify(toDos));
-    clickList();
 }
 function loadToDos(){
     
@@ -142,24 +139,3 @@ function clickList(){
     }
 }
 clickList();
-
-// function renameItem(){
-//     var newText = prompt("update text");
-//     if(!newText || newText === "" || newText === " ") return false;
-
-//     this.innerText = newText;
-// }
-// function removeItem(){
-//     var listItemId = this.id.replace("li_",'');
-//     document.getElementById('li_' + listItemId).style.display = "none";
-// }
-// function updateItemStatus(){
-//     var chId = this.id.replace("cb_",'');
-//     var itemText = document.getElementById("item_" + chId);
-
-//     if(this.checked){
-//         itemText.className = "checked";
-//     }else{
-//         itemText.className = "";
-//     }
-// }
