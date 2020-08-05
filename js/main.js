@@ -10,7 +10,7 @@ const createBoxBg = document.querySelector(".create-item-bg");
 const detailTitle = document.querySelector(".todolist-title");
 const detailDate = document.querySelector(".todolist-date");
 const detailDesc = document.querySelector(".description-text");
-
+const detailStat = document.querySelector(".status-text");
 openBtn.addEventListener("click",open_createItem_popup);
 
 closeBtn.addEventListener("click",close_createItem_popup);
@@ -52,7 +52,7 @@ function close_createItem_popup(){
 }
 let id = 0;
 
-function addNewItem(list, itemText, itemDesc){
+function addNewItem(list, itemTitle, itemDesc){
     const date = new Date();
     id++;
 
@@ -67,39 +67,53 @@ function addNewItem(list, itemText, itemDesc){
     
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
+    checkbox.classList.add("checkbox");
     checkbox.id = "cb_" + id;
     
+    // title
     const text = document.createElement("p");
     text.id = "text_" + id;
-    text.innerText = itemText;
+    text.innerText = itemTitle;
 
+    // date
     const span = document.createElement("span");
     span.id = "span_" + id;
     span.innerText = itemDate;
 
+    // text
+    const span2 = document.createElement("span");
+    span2.id = "span2_" + id;
+    span2.innerText = itemDesc;
+
     listItem.appendChild(checkbox);
     listItem.appendChild(text);
+    listItem.appendChild(span2);
     listItem.appendChild(span);
     list.appendChild(listItem);
-    
+
+    let status = false;
+
+    showItem(itemTitle, itemDesc, itemDate, status);
+    saveToDos(itemTitle, itemDesc, date, id, status);
+}
+function showItem(itemTitle, itemDesc, itemDate, itemStat){
+
+    detailTitle.innerText = itemTitle;
+    detailDate.innerText = itemDate;
+    detailDesc.innerText = itemDesc;
+    detailStat.innerText = itemStat;
+}
+function saveToDos(title,text,date,id,status){
+        
     const toDoObj = {
-        title: itemText,
-        text: itemDesc,
+        title: title,
+        text: text,
         id: id,
-        date: itemDate
+        date: date,
+        statu: status
     };
     toDos.push(toDoObj);
     
-    showItem(itemText, itemDesc, itemDate);
-    saveToDos();
-}
-function showItem(itemText, itemDesc, itemDate){
-
-    detailTitle.innerText = itemText;
-    detailDate.innerText = itemDate;
-    detailDesc.innerText = itemDesc;
-}
-function saveToDos(){
     localStorage.setItem(TODOS_LS, JSON.stringify(toDos));
 }
 function loadToDos(){
@@ -119,23 +133,21 @@ function clickList(){
     
     for(let i = 0; i < todoListItem.length; i++){
         todoListItem[i].addEventListener("click",()=>{
-            let listItemId = todoListItem[i].id;
-            listItemId = listItemId.replace("li_","");
-            listItemId = Number(listItemId);
-            if(loadedToDos !== null){
-                const parseToDos = JSON.parse(loadedToDos);
-                
-                parseToDos.forEach(function(toDo){
-                    if(toDo.id == listItemId){
-                        let toDoTitle = toDo.title;
-                        let toDoText = toDo.text;
-                        let toDoDate = toDo.date;
-                        
-                        showItem(toDoTitle, toDoText, toDoDate);
-                    }
-                });
+            console.log(todoListItem[i].childNodes[2]);
+            let toDoStat;
+            if(todoListItem[i].childNodes[0].checked){
+                toDoStat = "끝난 일";
+            }else{
+                toDoStat = "하는 일";
             }
-        });
+            let toDoTitle = todoListItem[i].childNodes[1].textContent;
+            let toDoText = todoListItem[i].childNodes[2].textContent;
+            let toDoDate = todoListItem[i].childNodes[3].textContent;
+
+            console.log("stat"+toDoStat +"title : "+toDoTitle + "text : "+toDoText + "date : "+toDoDate);
+            
+            showItem(toDoTitle, toDoText, toDoDate, toDoStat);
+        })
     }
 }
 clickList();

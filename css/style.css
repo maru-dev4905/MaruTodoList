@@ -151,9 +151,18 @@ input:focus, button:focus, textarea:focus{
     background-color: #fff;
     transition: 0.2s;
     cursor: pointer;
+    margin-bottom: 5px;
 }
+
 #todolist .list-item:hover{
     background-color: rgba(200,200,200,0.1);
+}
+#todolist .list-item.checked{
+    background-color: #4a69bd;
+    color: #fff;
+}
+#todolist .list-item.checked:hover{
+    background-color: rgba(74, 105, 189, 0.9);
 }
 #todolist .list-item span{
     justify-self: flex-end;
@@ -161,6 +170,9 @@ input:focus, button:focus, textarea:focus{
 }
 #todolist .list-item input{
     margin-right: 10px;
+}
+#todolist .list-item span[id*="span2_"]{
+    display: none;
 }
 .detail-box{
     border: 1px solid rgba(200,200,200,0.5);
@@ -196,7 +208,9 @@ input:focus, button:focus, textarea:focus{
     font-size: 14px;
     line-height: 22px;
     word-break: break-all;
-    height: 200px;
+    min-height: 200px;
+    height: auto;
+    margin-bottom: 20px;
 }
 .detail-box #update-title{
     width: 100%;
