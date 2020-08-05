@@ -1,8 +1,8 @@
 const updateOpenBtn = document.querySelector(".update-btn");
+const updateCloseBtn = document.getElementById("update-item-close-btn");
 
 const updateBtn = document.getElementById("btnUpdate");
 const updatePopup = document.getElementById("update-item");
-const updateCloseBtn = document.getElementById("update-item-close-btn");
 
 updateOpenBtn.addEventListener("click",open_item_popup);
 updateCloseBtn.addEventListener("click",close_item_popup);
@@ -21,18 +21,22 @@ function open_item_popup(){
     updatePopup.style.display = "block";
     createBoxBg.style.display = "block";
     
-    const inputTitle = document.getElementById("title-input2");
-    const inputDesc = document.getElementById("title-description2");
+    let id = document.querySelector(".detail-id").textContent;
+    let todoListItem = document.querySelectorAll(".list-item");
 
-    let detailTitle = document.querySelector(".todolist-title").textContent;
-    let detailDesc = document.querySelector(".description-text").textContent;
+    for(let i = 0; i < todoListItem.length; i++){
+        if(todoListItem[i].id.substr(3) == id){
+            let titleText = todoListItem[i].childNodes[1].textContent;
+            let titleDesc = todoListItem[i].childNodes[2].textContent;
 
-    inputTitle.value = detailTitle;
-    inputDesc.value = detailDesc;
-
-    saveToDos2(detailTitle, detailDesc);
+            const inputTitle = document.getElementById("title-input2");
+            const inputDesc  = document.getElementById("title-description2");
+            
+            inputTitle.value = titleText;
+            inputDesc.value = titleDesc;
+        }
+    }
 }
-
 
 function close_item_popup(){
     updatePopup.style.display = "none";
@@ -40,26 +44,32 @@ function close_item_popup(){
 }
 
 function update_item(){
-
-
-    let newTitle = document.getElementById("title-input2").value;
-    let newDesc = document.getElementById("title-description2").value;
-    
-    showItem(newTitle, newDesc, newItemDate);
-    close_item_popup();
-}
-function saveToDos2(title, desc){
-    
+    let id = document.querySelector(".detail-id").textContent;
+    let todoListItem = document.querySelectorAll(".list-item");
     let newTitle = document.getElementById("title-input2").value;
     let newDesc = document.getElementById("title-description2").value;
 
-    if(loadedToDos !== null){
-        const parsedToDos2 = JSON.parse(loadedToDos);
-        
-        parsedToDos2.forEach(function(toDo){
-            if(toDo.title == title){
-                
+    for(let i = 0; i < todoListItem.length; i++){
+        let todoListId = todoListItem[i].id.substr(3);
+
+        if(todoListId == id){
+            todoListItem[i].childNodes[1].innerText = newTitle;
+            todoListItem[i].childNodes[2].innerText = newDesc;
+            todoListItem[i].childNodes[3].innerText = newItemDate;
+            
+            let todoListItemChecked;
+
+            if(todoListItem[i].childNodes[0].checked){
+                todoListItemChecked = "끝난 일";    
+            }else{
+                todoListItemChecked = "하는 일";
             }
-        })
+
+            close_item_popup();
+            showItem(newTitle, newDesc, newItemDate, todoListItemChecked, id);
+        }else{
+            return false;
+        }
+        removeToDos(newTitle, newDesc, newItemDate, id, todoListItemChecked);
     }
 }

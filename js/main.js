@@ -11,6 +11,8 @@ const detailTitle = document.querySelector(".todolist-title");
 const detailDate = document.querySelector(".todolist-date");
 const detailDesc = document.querySelector(".description-text");
 const detailStat = document.querySelector(".status-text");
+const detailId = document.querySelector(".detail-id");
+
 openBtn.addEventListener("click",open_createItem_popup);
 
 closeBtn.addEventListener("click",close_createItem_popup);
@@ -96,12 +98,13 @@ function addNewItem(list, itemTitle, itemDesc){
     showItem(itemTitle, itemDesc, itemDate, status);
     saveToDos(itemTitle, itemDesc, date, id, status);
 }
-function showItem(itemTitle, itemDesc, itemDate, itemStat){
+function showItem(itemTitle, itemDesc, itemDate, itemStat, itemId){
 
     detailTitle.innerText = itemTitle;
     detailDate.innerText = itemDate;
     detailDesc.innerText = itemDesc;
     detailStat.innerText = itemStat;
+    detailId.innerText = itemId;
 }
 function saveToDos(title,text,date,id,status){
         
@@ -110,11 +113,19 @@ function saveToDos(title,text,date,id,status){
         text: text,
         id: id,
         date: date,
-        statu: status
+        status: status
     };
     toDos.push(toDoObj);
     
     localStorage.setItem(TODOS_LS, JSON.stringify(toDos));
+}
+function removeToDos(newTitle, newDesc, newItemDate, id, todoListItemChecked){
+    const cleanToDos = toDos.filter(function(toDo){
+        return toDo.id !== parseInt(id);
+    });
+    toDos = cleanToDos;
+
+    saveToDos(newTitle, newDesc, newItemDate, id, todoListItemChecked);
 }
 function loadToDos(){
     
@@ -133,20 +144,18 @@ function clickList(){
     
     for(let i = 0; i < todoListItem.length; i++){
         todoListItem[i].addEventListener("click",()=>{
-            console.log(todoListItem[i].childNodes[2]);
             let toDoStat;
             if(todoListItem[i].childNodes[0].checked){
                 toDoStat = "끝난 일";
             }else{
                 toDoStat = "하는 일";
             }
+            let toDoId = todoListItem[i].id.substr(3);
             let toDoTitle = todoListItem[i].childNodes[1].textContent;
             let toDoText = todoListItem[i].childNodes[2].textContent;
             let toDoDate = todoListItem[i].childNodes[3].textContent;
 
-            console.log("stat"+toDoStat +"title : "+toDoTitle + "text : "+toDoText + "date : "+toDoDate);
-            
-            showItem(toDoTitle, toDoText, toDoDate, toDoStat);
+            showItem(toDoTitle, toDoText, toDoDate, toDoStat, toDoId);
         })
     }
 }
