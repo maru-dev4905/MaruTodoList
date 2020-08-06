@@ -127,6 +127,9 @@ function removeToDos(){
 
     localStorage.setItem(TODOS_LS, JSON.stringify(toDos));
 }
+function allRemoveToDos(){
+    localStorage.clear(TODOS_LS);
+}
 function loadToDos(){
     
     if(loadedToDos !== null){

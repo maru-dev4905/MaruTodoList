@@ -1,4 +1,5 @@
 const deleteBtn = document.querySelector(".delete-btn");
+const allDeleteBtn = document.querySelector(".allClear-btn");
 
 deleteBtn.addEventListener("click",()=>{
     let todoListItem = document.querySelectorAll(".list-item");
@@ -12,5 +13,16 @@ deleteBtn.addEventListener("click",()=>{
             
             removeToDos();
         }
+    }
+})
+
+allDeleteBtn.addEventListener("click",()=>{
+    let todoListItem = document.querySelectorAll(".list-item");
+
+    for(let i = 0; i < todoListItem.length; i++){
+        
+        todoListItem[i].remove();
+
+        allRemoveToDos();
     }
 })

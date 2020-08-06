@@ -138,7 +138,7 @@ input:focus, button:focus, textarea:focus{
 }
 #todolist{
     width: 70%;
-    max-height: calc(100vh - 250px);
+    max-height: calc(100vh - 300px);
     overflow-y: scroll;
     margin-right: 30px;
 }
@@ -398,4 +398,21 @@ input:focus, textarea:focus{
     align-items: center;
     font-size: 17px;
     text-transform: uppercase;
+}
+.allClear-btn{
+    width: 200px;
+    height: 50px;
+    background-color: rgba(74, 105, 189, 0.9);
+    border-radius: 15px;
+    color: #fff;
+    font-size: 20px;
+    position: absolute;
+    bottom: 75px;
+    left: calc(70% - 250px);
+    z-index: 100;
+    transition: 0.05s;
+}
+.allClear-btn:active{
+    opacity: 0.8;
+    box-shadow: 0px 0px 5px rgba(74, 105, 189, 0.9);
 }
