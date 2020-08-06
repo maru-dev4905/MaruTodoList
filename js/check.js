@@ -1,5 +1,4 @@
 let todoListItem = document.querySelectorAll(".list-item");
-let todoListCheckBox = todoListItem[1].childNodes[0];
 
 for(let i = 0; i < todoListItem.length; i++){
     let todoListCheckBox = todoListItem[i].childNodes[0];
