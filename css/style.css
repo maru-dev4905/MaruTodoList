@@ -138,7 +138,8 @@ input:focus, button:focus, textarea:focus{
 }
 #todolist{
     width: 70%;
-    min-height: calc(100vh - 250px);
+    max-height: calc(100vh - 250px);
+    overflow-y: scroll;
     margin-right: 30px;
 }
 #todolist .list-item{
