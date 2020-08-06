@@ -7,8 +7,6 @@ const updatePopup = document.getElementById("update-item");
 updateOpenBtn.addEventListener("click",open_item_popup);
 updateCloseBtn.addEventListener("click",close_item_popup);
 
-updateBtn.addEventListener("click",update_item);
-
 const newDate = new Date;
     
 const newYear = newDate.getFullYear();
@@ -43,15 +41,17 @@ function close_item_popup(){
     createBoxBg.style.display = "none";
 }
 
+updateBtn.addEventListener("click",update_item);
+
 function update_item(){
-    let id = document.querySelector(".detail-id").textContent;
     let todoListItem = document.querySelectorAll(".list-item");
     let newTitle = document.getElementById("title-input2").value;
     let newDesc = document.getElementById("title-description2").value;
-
-    for(let i = 0; i < todoListItem.length; i++){
+    
+    let i = 0;
+    while(i < todoListItem.length){
+        let id = document.querySelector(".detail-id").textContent;
         let todoListId = todoListItem[i].id.substr(3);
-
         if(todoListId == id){
             todoListItem[i].childNodes[1].innerText = newTitle;
             todoListItem[i].childNodes[2].innerText = newDesc;
@@ -64,12 +64,11 @@ function update_item(){
             }else{
                 todoListItemChecked = "하는 일";
             }
-
-            close_item_popup();
             showItem(newTitle, newDesc, newItemDate, todoListItemChecked, id);
-        }else{
-            return false;
+            saveToDos(newTitle, newDesc, newItemDate, id, todoListItemChecked)
+            removeToDos();
+            close_item_popup();
         }
-        removeToDos(newTitle, newDesc, newItemDate, id, todoListItemChecked);
+        i++;
     }
 }

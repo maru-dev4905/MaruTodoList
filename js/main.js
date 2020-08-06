@@ -52,7 +52,7 @@ function close_createItem_popup(){
     createBox.style.display = "none";
     createBoxBg.style.display = "none";
 }
-let id = 0;
+let id = 1;
 
 function addNewItem(list, itemTitle, itemDesc){
     const date = new Date();
@@ -119,13 +119,13 @@ function saveToDos(title,text,date,id,status){
     
     localStorage.setItem(TODOS_LS, JSON.stringify(toDos));
 }
-function removeToDos(newTitle, newDesc, newItemDate, id, todoListItemChecked){
+function removeToDos(){
     const cleanToDos = toDos.filter(function(toDo){
         return toDo.id !== parseInt(id);
     });
     toDos = cleanToDos;
 
-    saveToDos(newTitle, newDesc, newItemDate, id, todoListItemChecked);
+    localStorage.setItem(TODOS_LS, JSON.stringify(toDos));
 }
 function loadToDos(){
     
