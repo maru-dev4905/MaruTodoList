@@ -83,13 +83,13 @@ function addNewItem(list, itemTitle, itemDesc){
     span.innerText = itemDate;
 
     // text
-    const span2 = document.createElement("span");
-    span2.id = "span2_" + id;
-    span2.innerText = itemDesc;
+    const pre = document.createElement("pre");
+    pre.id = "pre_" + id;
+    pre.innerText = itemDesc;
 
     listItem.appendChild(checkbox);
     listItem.appendChild(text);
-    listItem.appendChild(span2);
+    listItem.appendChild(pre);
     listItem.appendChild(span);
     list.appendChild(listItem);
 
@@ -102,7 +102,7 @@ function showItem(itemTitle, itemDesc, itemDate, itemStat, itemId){
 
     detailTitle.innerText = itemTitle;
     detailDate.innerText = itemDate;
-    detailDesc.innerText = itemDesc;
+    detailDesc.innerHTML = itemDesc;
     detailStat.innerText = itemStat;
     detailId.innerText = itemId;
 }
@@ -155,9 +155,9 @@ function clickList(){
             }
             let toDoId = todoListItem[i].id.substr(3);
             let toDoTitle = todoListItem[i].childNodes[1].textContent;
-            let toDoText = todoListItem[i].childNodes[2].textContent;
+            let toDoText = todoListItem[i].childNodes[2].innerHTML;
             let toDoDate = todoListItem[i].childNodes[3].textContent;
-
+            console.dir(todoListItem[i].childNodes[2].innerHTML);
             showItem(toDoTitle, toDoText, toDoDate, toDoStat, toDoId);
         })
     }

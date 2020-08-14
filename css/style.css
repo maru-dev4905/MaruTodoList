@@ -173,7 +173,7 @@ input:focus, button:focus, textarea:focus{
 #todolist .list-item input{
     margin-right: 10px;
 }
-#todolist .list-item span[id*="span2_"]{
+#todolist .list-item pre{
     display: none;
 }
 .detail-box{
