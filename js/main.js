@@ -54,55 +54,15 @@ function close_createItem_popup(){
 }
 let id = 1;
 
-function addNewItem(list, itemTitle, itemDesc){
-    const date = new Date();
-    id++;
-
-    const year = date.getFullYear();
-    const month = date.getMonth() + 1;
-    const day = date.getDate();
-    const itemDate = year + "/" + month + "/" + day;
-
-    const listItem = document.createElement("li");
-    listItem.id = "li_" + id;
-    listItem.classList.add("list-item");
-    
-    const checkbox = document.createElement("input");
-    checkbox.type = "checkbox";
-    checkbox.classList.add("checkbox");
-    checkbox.id = "cb_" + id;
-    
-    // title
-    const text = document.createElement("p");
-    text.id = "text_" + id;
-    text.innerText = itemTitle;
-
-    // date
-    const span = document.createElement("span");
-    span.id = "span_" + id;
-    span.innerText = itemDate;
-
-    // text
-    const pre = document.createElement("pre");
-    pre.id = "pre_" + id;
-    pre.innerText = itemDesc;
-
-    listItem.appendChild(checkbox);
-    listItem.appendChild(text);
-    listItem.appendChild(pre);
-    listItem.appendChild(span);
-    list.appendChild(listItem);
-
-    let status = false;
-
-    showItem(itemTitle, itemDesc, itemDate, status);
-    saveToDos(itemTitle, itemDesc, date, id, status);
-}
 function showItem(itemTitle, itemDesc, itemDate, itemStat, itemId){
     detailTitle.innerText = itemTitle;
     detailDate.innerText = itemDate;
     detailDesc.innerHTML = itemDesc;
-    detailStat.innerText = itemStat;
+    if(itemStat == false){
+        detailStat.innerText = "하는 중";
+    }else if(itemStat == true){
+        detailStat.innerText = "끝난 일";
+    }
     detailId.innerText = itemId;
 }
 function saveToDos(title,text,date,id,status){
@@ -134,7 +94,7 @@ function loadToDos(){
     if(loadedToDos !== null){
         const parsedToDos  = JSON.parse(loadedToDos);
         parsedToDos.forEach(function(toDo){
-            addNewItem(document.getElementById("todolist"),toDo.title, toDo.text);
+            addNewItem(document.getElementById("todolist"),toDo.title, toDo.text, toDo.status);
         })
     }
 }
@@ -146,12 +106,7 @@ function clickList(){
     
     for(let i = 0; i < todoListItem.length; i++){
         todoListItem[i].addEventListener("click",()=>{
-            let toDoStat;
-            if(todoListItem[i].childNodes[0].checked){
-                toDoStat = "끝난 일";
-            }else{
-                toDoStat = "하는 일";
-            }
+            let toDoStat = todoListItem[i].childNodes[0].checked;
             let toDoId = todoListItem[i].id.substr(3);
             let toDoTitle = todoListItem[i].childNodes[1].textContent;
             let toDoText = todoListItem[i].childNodes[2].innerHTML;
