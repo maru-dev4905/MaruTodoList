@@ -25,11 +25,10 @@ function open_item_popup(){
     for(let i = 0; i < todoListItem.length; i++){
         if(todoListItem[i].id.substr(3) == id){
             let titleText = todoListItem[i].childNodes[1].textContent;
-            let titleDesc = todoListItem[i].childNodes[2].textContent;
-
+            let titleDesc = todoListItem[i].childNodes[2].innerHTML;
+            titleDesc = titleDesc.replace(/(<br>|<br\/>|<br \/>)/g, '\r\n');
             const inputTitle = document.getElementById("title-input2");
             const inputDesc  = document.getElementById("title-description2");
-            
             inputTitle.value = titleText;
             inputDesc.value = titleDesc;
         }
@@ -47,16 +46,14 @@ function update_item(){
     let todoListItem = document.querySelectorAll(".list-item");
     let newTitle = document.getElementById("title-input2").value;
     let newDesc = document.getElementById("title-description2").value;
-    
     let i = 0;
     while(i < todoListItem.length){
         let id = document.querySelector(".detail-id").textContent;
         let todoListId = todoListItem[i].id.substr(3);
         if(todoListId == id){
             todoListItem[i].childNodes[1].innerText = newTitle;
-            todoListItem[i].childNodes[2].innerText = newDesc;
+            todoListItem[i].childNodes[2].innerHTML = newDesc;
             todoListItem[i].childNodes[3].innerText = newItemDate;
-            
             let todoListItemChecked;
 
             if(todoListItem[i].childNodes[0].checked){

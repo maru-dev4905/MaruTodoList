@@ -99,7 +99,6 @@ function addNewItem(list, itemTitle, itemDesc){
     saveToDos(itemTitle, itemDesc, date, id, status);
 }
 function showItem(itemTitle, itemDesc, itemDate, itemStat, itemId){
-
     detailTitle.innerText = itemTitle;
     detailDate.innerText = itemDate;
     detailDesc.innerHTML = itemDesc;
@@ -157,7 +156,6 @@ function clickList(){
             let toDoTitle = todoListItem[i].childNodes[1].textContent;
             let toDoText = todoListItem[i].childNodes[2].innerHTML;
             let toDoDate = todoListItem[i].childNodes[3].textContent;
-            console.dir(todoListItem[i].childNodes[2].innerHTML);
             showItem(toDoTitle, toDoText, toDoDate, toDoStat, toDoId);
         })
     }
